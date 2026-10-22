@@ -1,0 +1,653 @@
+/**
+ * CampusDesk Comprehensive Responsive Design Engine
+ * Client: TechNova Solutions
+ * Eliminates horizontal scroll across all screens (iPhone, Android, Pixel, Tablets, Desktops)
+ * Dynamic stack layouts, mobile top headers, responsive tables-to-cards, and fluid typography.
+ */
+
+/* ========================================================
+   1. GLOBAL ZERO-HORIZONTAL-OVERFLOW & VERTICAL SCROLL ENGINE
+   Guarantees smooth vertical scrolling (de bajada) without any horizontal scroll
+   ======================================================== */
+html {
+  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: auto !important;
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: auto !important;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Ensure images and media never force horizontal overflow */
+img, svg, video, canvas, audio, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.main-wrapper {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.page-content {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.auth-page,
+.landing-page {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Hamburger menu toggle button */
+.menu-toggle-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.menu-toggle-btn:hover {
+  background: var(--bg-card);
+}
+
+/* Sidebar backdrop for mobile drawer */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(7, 4, 13, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 45;
+}
+
+/* ========================================================
+   2. DESKTOP & LAPTOP ADAPTATIONS (<= 1200px)
+   ======================================================== */
+@media (max-width: 1200px) {
+  .dashboard-grid-two-col {
+    grid-template-columns: 1fr;
+  }
+  
+  .detail-grid-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* ========================================================
+   3. TABLETS LANDSCAPE (<= 992px)
+   ======================================================== */
+@media (max-width: 992px) {
+  .menu-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop.active {
+    display: block;
+  }
+
+  .main-wrapper {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .dashboard-grid-even {
+    grid-template-columns: 1fr;
+  }
+
+  /* Auth Split Screen on Tablet */
+  .auth-split-container {
+    flex-direction: column;
+  }
+
+  .auth-hero-panel {
+    padding: 36px 24px 20px;
+    flex: none;
+    text-align: center;
+    align-items: center;
+  }
+
+  .auth-brand {
+    justify-content: center;
+  }
+
+  .auth-hero-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .auth-feature-list {
+    display: none;
+  }
+
+  .auth-form-panel {
+    padding: 24px 20px;
+  }
+}
+
+/* ========================================================
+   4. TABLETS PORTRAIT & MOBILE (<= 768px)
+   ======================================================== */
+@media (max-width: 768px) {
+  /* Top Header Navigation Overhaul */
+  .top-header {
+    height: 60px;
+    padding: 0 12px;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-left {
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .header-title-box {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .header-title-box h1 {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  /* CRITICAL FIX: Hide lengthy subtitle that squashes header and overflows on search bar */
+  .header-title-box p {
+    display: none !important;
+  }
+
+  .header-right {
+    gap: 6px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Profile Avatar compact on mobile */
+  .user-meta-info {
+    display: none !important;
+  }
+
+  .user-profile-badge {
+    padding: 2px 4px;
+    border: none;
+    background: transparent;
+    gap: 0;
+  }
+
+  .user-avatar-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+
+  /* Language Switcher compact */
+  .language-toggle-btn {
+    padding: 5px 8px;
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+
+  /* Notification Bell button */
+  .notifications-bell-btn {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Notifications Dropdown Panel on Mobile */
+  .notifications-panel {
+    position: fixed;
+    top: 66px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-width: calc(100vw - 20px);
+    z-index: 100;
+  }
+
+  /* Action Buttons in header */
+  #top-create-btn {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  /* Page Content Workspace */
+  .page-content {
+    padding: 14px 12px;
+  }
+
+  /* Dashboard Metrics Grid (2 columns on mobile) */
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .kpi-card {
+    padding: 14px 12px;
+  }
+
+  .kpi-value {
+    font-size: 1.6rem;
+  }
+
+  .kpi-label {
+    font-size: 0.7rem;
+  }
+
+  /* Filters & Search Toolbar */
+  .tickets-filter-bar {
+    padding: 14px 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .filter-controls-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .search-input-wrapper {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .search-input-wrapper input {
+    width: 100% !important;
+  }
+
+  .filter-select {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  #btn-reset-filters {
+    width: 100% !important;
+  }
+
+  /* Table to Cards Transformation for Clean Vertical Scrolling */
+  .responsive-cards-table thead {
+    display: none !important;
+  }
+
+  .responsive-cards-table, 
+  .responsive-cards-table tbody, 
+  .responsive-cards-table tr, 
+  .responsive-cards-table td {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .responsive-cards-table tr {
+    margin-bottom: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    padding: 12px 14px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .responsive-cards-table td {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.12) !important;
+    padding: 8px 0 !important;
+    font-size: 0.85rem;
+    gap: 10px;
+  }
+
+  .responsive-cards-table td:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  .responsive-cards-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  /* Pagination Bar */
+  .pagination-container {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 14px 12px;
+  }
+
+  /* Ticket Detail Lifecycle Stepper */
+  .detail-title-row {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .detail-title-group h2 {
+    font-size: 1.25rem;
+    word-break: break-word;
+  }
+
+  .lifecycle-stepper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 8px;
+  }
+
+  .stepper-progress-bar {
+    display: none !important;
+  }
+
+  .lifecycle-step {
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .step-node {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .step-label {
+    margin-top: 0;
+    font-size: 0.82rem;
+  }
+
+  /* Landing Page on Mobile */
+  .landing-header {
+    padding: 12px 14px;
+  }
+
+  .landing-brand-title {
+    font-size: 1rem;
+  }
+
+  .landing-header-actions {
+    gap: 6px;
+  }
+
+  .landing-header-actions .btn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .landing-hero {
+    padding: 50px 14px 36px;
+  }
+
+  .hero-heading {
+    font-size: 2.1rem;
+    margin-bottom: 16px;
+    line-height: 1.18;
+    word-break: break-word;
+  }
+
+  .hero-subtext {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .benefits-section,
+  .workflow-section {
+    padding: 44px 14px;
+  }
+
+  .section-heading {
+    font-size: 1.6rem;
+    word-break: break-word;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .benefit-card {
+    padding: 22px 16px;
+  }
+
+  .flow-steps-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .flow-step-box {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .landing-footer {
+    padding: 36px 14px 20px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Authentication Screen on Mobile */
+  .auth-hero-panel {
+    display: none !important;
+  }
+
+  .auth-form-panel {
+    padding: 20px 14px;
+  }
+
+  .auth-card {
+    padding: 24px 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .demo-accounts-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* ========================================================
+   5. STANDARD MOBILE PHONES (<= 576px - iPhone, Pixel, Galaxy)
+   ======================================================== */
+@media (max-width: 576px) {
+  .top-header {
+    height: 56px;
+    padding: 0 10px;
+  }
+
+  .header-title-box h1 {
+    font-size: 0.95rem;
+    max-width: 120px;
+  }
+
+  #top-create-btn {
+    padding: 5px 8px;
+    font-size: 0.72rem;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .card-body {
+    padding: 14px 12px;
+  }
+
+  .btn-lg {
+    padding: 10px 18px;
+    font-size: 0.92rem;
+  }
+
+  .modal-dialog {
+    max-width: calc(100vw - 20px);
+    margin: 10px auto;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+
+  .auth-lang-floating {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* ========================================================
+   6. SMALL MOBILE PHONES (<= 420px - iPhone SE, Galaxy Fold)
+   ======================================================== */
+@media (max-width: 420px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-title-box h1 {
+    max-width: 90px;
+    font-size: 0.88rem;
+  }
+
+  #top-create-btn {
+    max-width: 80px;
+    padding: 5px 6px;
+    font-size: 0.7rem;
+  }
+
+  .language-toggle-btn {
+    padding: 4px 6px;
+    font-size: 0.7rem;
+  }
+
+  .hero-heading {
+    font-size: 1.8rem;
+  }
+
+  .brand-title {
+    font-size: 0.95rem;
+  }
+
+  .brand-subtitle {
+    display: none;
+  }
+}

@@ -1,0 +1,498 @@
+/**
+ * CampusDesk Landing Page Styles
+ * Client: TechNova Solutions
+ * Dedicated styles for corporate landing page, hero, benefits, workflow stepper, and footer.
+ */
+
+/* Top Enterprise Navigation Header */
+.landing-header {
+  background-color: rgba(12, 7, 24, 0.72);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.landing-brand-title {
+  color: var(--text-main);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.landing-header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Hero Presentation Section */
+.landing-hero {
+  background: transparent;
+  color: #ffffff;
+  padding: 110px 40px 90px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: none;
+}
+
+.landing-hero-content {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(168, 85, 247, 0.18);
+  border: 1px solid rgba(192, 132, 252, 0.5);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+  padding: 7px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+  color: #d8b4fe;
+  font-weight: 600;
+  animation: badgeGlowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes badgeGlowPulse {
+  0% { box-shadow: 0 0 14px rgba(168, 85, 247, 0.25); }
+  100% { box-shadow: 0 0 26px rgba(192, 132, 252, 0.6); }
+}
+
+.hero-heading {
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 40%, #ebd5ff 75%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: heroHeadingShimmer 7s ease infinite;
+}
+
+@keyframes heroHeadingShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero-subtext {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Benefits Section */
+.benefits-section {
+  padding: 88px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title-box {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.section-heading {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.benefit-card {
+  background: rgba(19, 12, 38, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.benefit-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(147, 51, 234, 0.25), 0 0 24px rgba(168, 85, 247, 0.15);
+  border-color: rgba(192, 132, 252, 0.5);
+}
+
+.benefit-icon-box {
+  width: 48px;
+  height: 48px;
+  background: rgba(168, 85, 247, 0.18);
+  color: var(--color-accent);
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.benefit-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.benefit-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* Lifecycle Workflow Flow Visual */
+.workflow-section {
+  background: transparent;
+  border-top: 1px solid rgba(168, 85, 247, 0.15);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+  padding: 88px 40px;
+}
+
+.flow-steps-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.flow-step-box {
+  background: rgba(19, 12, 38, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  text-align: center;
+  flex: 1;
+  min-width: 160px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.flow-step-box:hover {
+  border-color: var(--color-primary);
+}
+
+.flow-step-num {
+  width: 28px;
+  height: 28px;
+  background: var(--color-primary);
+  color: #ffffff;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-step-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.flow-step-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* Landing Footer */
+.landing-footer {
+  background-color: var(--bg-sidebar);
+  color: var(--text-muted);
+  padding: 60px 40px 30px;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-link {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.footer-link:hover {
+  color: var(--text-main);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .hero-heading { font-size: 2.2rem; }
+  .landing-header { padding: 16px 20px; }
+  .landing-hero { padding: 60px 20px; }
+  .flow-steps-container { flex-direction: column; }
+  .flow-step-box { width: 100%; }
+}
+
+/* ==========================================================================
+   CampusDesk Cinematic Intro Sequence (Pure Vanilla JS & CSS)
+   ========================================================================== */
+#campusdesk-intro-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  background: radial-gradient(circle at 50% 50%, #0d071d 0%, #05020a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.65s ease;
+  user-select: none;
+}
+
+#campusdesk-intro-overlay.dismissing {
+  opacity: 0;
+  transform: scale(1.08);
+  filter: blur(16px);
+  pointer-events: none;
+}
+
+#intro-warp-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.intro-content-core {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 540px;
+  padding: 24px;
+}
+
+.intro-emblem-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.intro-emblem-icon {
+  width: 58px;
+  height: 58px;
+  background: linear-gradient(135deg, #7e22ce, #c084fc);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 0 35px rgba(168, 85, 247, 0.8), 0 0 16px rgba(244, 63, 94, 0.5);
+  animation: introEmblemPulse 1.8s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  padding: 7px;
+}
+
+.intro-emblem-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+}
+
+@keyframes introEmblemPulse {
+  0% { transform: scale(0.96); box-shadow: 0 0 25px rgba(168, 85, 247, 0.6); }
+  100% { transform: scale(1.04); box-shadow: 0 0 45px rgba(192, 132, 252, 0.95), 0 0 20px rgba(6, 182, 212, 0.6); }
+}
+
+.intro-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.intro-ring-outer {
+  inset: -14px;
+  border: 1.5px dashed rgba(168, 85, 247, 0.55);
+  animation: introRotateCw 7s linear infinite;
+}
+
+.intro-ring-inner {
+  inset: -6px;
+  border: 1px solid rgba(6, 182, 212, 0.45);
+  border-left-color: transparent;
+  border-right-color: transparent;
+  animation: introRotateCcw 4.5s linear infinite;
+}
+
+@keyframes introRotateCw {
+  to { transform: rotate(360deg); }
+}
+@keyframes introRotateCcw {
+  to { transform: rotate(-360deg); }
+}
+
+.intro-brand-title {
+  font-size: 2.3rem;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  color: #ffffff;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 40%, #ebd5ff 70%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+}
+
+.intro-brand-sub {
+  font-size: 0.74rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 28px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.intro-progress-box {
+  width: 300px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.intro-progress-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.intro-progress-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #9333ea, #c084fc, #06b6d4);
+  box-shadow: 0 0 14px rgba(192, 132, 252, 0.9);
+  border-radius: 99px;
+  transition: width 0.08s linear;
+}
+
+.intro-status-text {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.73rem;
+  letter-spacing: 0.08em;
+  color: #d8b4fe;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-skip-btn {
+  position: absolute;
+  bottom: 28px;
+  right: 32px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(168, 85, 247, 0.28);
+  color: var(--text-muted);
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  z-index: 3;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.intro-skip-btn:hover {
+  background: rgba(168, 85, 247, 0.25);
+  color: #ffffff;
+  border-color: #c084fc;
+}

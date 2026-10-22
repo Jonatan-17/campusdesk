@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusDesk · User Profile | TechNova Solutions</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-wrapper">
+          <div class="brand-icon-box">
+            <img src="../assets/campuslands-logo.png" alt="Campuslands" class="brand-logo-img">
+          </div>
+          <div>
+            <span class="brand-title">CAMPUSDESK</span>
+            <span class="brand-subtitle">TechNova</span>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav" id="sidebar-nav"></nav>
+      <div class="sidebar-footer">
+        <a href="#" class="nav-link text-critical" id="sidebar-logout-btn"></a>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="top-header">
+        <div class="header-left">
+          <button id="menu-toggle" class="menu-toggle-btn" aria-label="Open sidebar menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="header-title-box">
+            <h1 data-i18n="nav_profile">Account Profile</h1>
+            <p data-i18n="profile_subtitle">Corporate identity and system authorization overview</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <!-- Mount points for i18n & notifications -->
+          <div id="header-i18n-container"></div>
+          <div id="header-notifications-mount"></div>
+
+          <div class="user-profile-badge" id="header-user-profile" title="View Profile"></div>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="card profile-card">
+          <div class="card-header">
+            <h3 class="card-title">Corporate User Credentials</h3>
+            <span class="badge badge-status-resolved"><span class="badge-dot"></span>ACTIVE ACCOUNT</span>
+          </div>
+          <div class="card-body">
+            <!-- Profile avatar header -->
+            <div class="profile-header">
+              <div id="profile-avatar-large" class="profile-avatar-large">
+                UN
+              </div>
+              <div>
+                <h2 id="profile-name-header" class="profile-name">Loading User...</h2>
+                <span id="profile-role-badge" class="badge profile-role-badge">ROLE</span>
+              </div>
+            </div>
+
+            <!-- Profile Info Metadata List -->
+            <div class="metadata-list">
+              <div class="profile-grid-2">
+                <div class="metadata-item">
+                  <span class="metadata-item-label">First Name</span>
+                  <span class="metadata-item-value" id="profile-first-name">-</span>
+                </div>
+                <div class="metadata-item">
+                  <span class="metadata-item-label">Last Name</span>
+                  <span class="metadata-item-value" id="profile-last-name">-</span>
+                </div>
+              </div>
+
+              <div class="metadata-item">
+                <span class="metadata-item-label">Corporate Email Address</span>
+                <span class="metadata-item-value" id="profile-email">-</span>
+              </div>
+
+              <div class="metadata-item">
+                <span class="metadata-item-label">System Security Role</span>
+                <span class="metadata-item-value" id="profile-role-text">-</span>
+              </div>
+
+              <div class="metadata-item">
+                <span class="metadata-item-label">Account Verification Status</span>
+                <div class="profile-status-wrapper">
+                  <span class="badge badge-status-resolved"><span class="badge-dot"></span>Active Corporate Member</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-footer">
+              <span class="profile-iam-note">TechNova Solutions IAM System</span>
+              <div class="profile-actions-wrapper" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                <button type="button" id="profile-change-password-btn" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 6px;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span data-i18n="change_password">Change Password</span>
+                </button>
+                <button type="button" id="profile-logout-btn" class="btn btn-secondary btn-sm text-critical">
+                  <span data-i18n="sign_out">Sign Out from CampusDesk</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal: Cambiar Contraseña -->
+        <div id="change-password-modal" class="modal-overlay" aria-hidden="true">
+          <div class="modal-box" role="dialog" aria-modal="true" style="max-width: 480px;">
+            <div class="modal-header">
+              <div class="modal-title" style="display: flex; align-items: center; gap: 8px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span data-i18n="change_password">Change Password</span>
+              </div>
+              <button type="button" id="change-pwd-close-btn" class="modal-close-btn" aria-label="Close">&times;</button>
+            </div>
+            <form id="change-password-form">
+              <div class="modal-body" style="display: flex; flex-direction: column; gap: 16px;">
+                <!-- Error Alert Box -->
+                <div id="change-pwd-alert" class="alert-box alert-error d-none" style="padding: 10px 14px; font-size: 0.9rem; border-radius: var(--radius-sm); background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5;"></div>
+
+                <!-- Current Password -->
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="change-pwd-current" class="form-label" data-i18n="current_password_label" style="font-weight: 600; margin-bottom: 6px; display: block;">Current Password</label>
+                  <div class="password-input-wrapper">
+                    <input type="password" id="change-pwd-current" class="form-control" placeholder="••••••••" required autocomplete="current-password" style="width: 100%;">
+                    <button type="button" class="password-toggle-btn" data-target="change-pwd-current" data-i18n="show_password" aria-label="Toggle password visibility">Show</button>
+                  </div>
+                  <div id="change-pwd-current-error" class="form-error-msg d-none" style="margin-top: 4px; color: var(--color-critical); font-size: 0.8rem;"></div>
+                </div>
+
+                <!-- New Password -->
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="change-pwd-new" class="form-label" data-i18n="new_password_label" style="font-weight: 600; margin-bottom: 6px; display: block;">New Password</label>
+                  <div class="password-input-wrapper">
+                    <input type="password" id="change-pwd-new" class="form-control" placeholder="••••••••" required autocomplete="new-password" style="width: 100%;">
+                    <button type="button" class="password-toggle-btn" data-target="change-pwd-new" data-i18n="show_password" aria-label="Toggle password visibility">Show</button>
+                  </div>
+                  <div class="form-hint" data-i18n="password_rule_hint" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+                    At least 8 characters, with 1 uppercase, 1 lowercase, and 1 number.
+                  </div>
+                  <div id="change-pwd-new-error" class="form-error-msg d-none" style="margin-top: 4px; color: var(--color-critical); font-size: 0.8rem;"></div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label for="change-pwd-confirm" class="form-label" data-i18n="confirm_new_password_label" style="font-weight: 600; margin-bottom: 6px; display: block;">Confirm New Password</label>
+                  <div class="password-input-wrapper">
+                    <input type="password" id="change-pwd-confirm" class="form-control" placeholder="••••••••" required autocomplete="new-password" style="width: 100%;">
+                    <button type="button" class="password-toggle-btn" data-target="change-pwd-confirm" data-i18n="show_password" aria-label="Toggle password visibility">Show</button>
+                  </div>
+                  <div id="change-pwd-confirm-error" class="form-error-msg d-none" style="margin-top: 4px; color: var(--color-critical); font-size: 0.8rem;"></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="change-pwd-cancel-btn" class="btn btn-secondary" data-i18n="cancel">Cancel</button>
+                <button type="submit" id="change-pwd-submit-btn" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                  <span id="change-pwd-btn-text" data-i18n="update_password">Update Password</span>
+                  <span id="change-pwd-spinner" class="spinner btn-spinner-icon d-none" style="width: 16px; height: 16px;"></span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/notifications.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/pages/profile.js"></script>
+</body>
+</html>
