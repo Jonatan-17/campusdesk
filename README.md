@@ -2,8 +2,6 @@
 
 Plataforma web de gestión de incidencias tecnológicas para TechNova Solutions: centraliza las solicitudes de soporte, controla su ciclo de vida (OPEN → ASSIGNED → IN_PROGRESS → RESOLVED → CLOSED) y protege la información según el rol de cada usuario.
 
-> Dueño de este archivo: Persona 4. Cada persona le pasa los datos de su zona.
-
 ## Integrantes
 
 | Persona | Nombre | Rama | Zona |
@@ -321,3 +319,7 @@ Capturas de la aplicación funcionando contra el backend y PostgreSQL, con los d
 
 ### 7. Documentación Swagger
 ![Swagger](docs/evidencias/07-swagger.png)
+
+## Extensión individual: SLA por prioridad
+
+En el examen individual, Jonatan agregó fechas límite según la prioridad del ticket y un endpoint para consultar los tickets vencidos. El detalle está en [docs/extension-sla.md](docs/extension-sla.md).
